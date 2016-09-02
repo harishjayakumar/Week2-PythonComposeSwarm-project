@@ -1,11 +1,10 @@
-#FROM ubuntu:latest
-#MAINTAINER Harish Jayakumar
+FROM python:2.7-alpine
 
-# Commands to run when creating the image. Here you are updating the ubuntu image to make sure you have the latest packages 
-#RUN apt-get update
-#RUN apt-get install -y python python-dev python-distribute python-pip
+# Add requirements first for better build caching capabilites
+COPY requirements.txt /code/requirements.txt
 
-FROM python:2.7
+# Install requirements
+RUN pip install -r /code/requirements.txt
 
 # Add everything from the current directory to a directory called code inside the container
 ADD . /code
@@ -13,7 +12,8 @@ ADD . /code
 # Make the /code as a working directory
 WORKDIR /code
 
-RUN pip install -r requirements.txt
+# Notify Docker to expose port 5000 on runtime
 EXPOSE 5000
-CMD python app.py
 
+# Run our app
+CMD python app.py

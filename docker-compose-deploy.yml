@@ -1,0 +1,32 @@
+version: "2"
+
+services:
+  web:
+    image: ${DTR_URL}/admin/hello-world-python:${TAG}
+    ports:
+     - "5000"
+    networks:
+      - hello-world
+    labels:
+      - "interlock.hostname=hello-world-${ENVIRONMENT}"
+      - "interlock.domain=${DOMAIN_NAME}"
+    environment:
+      - "constraint:node==*-ucpnode"
+
+  redis:
+    image: redis:3.2-alpine
+    command: redis-server --appendonly yes
+    networks:
+      - hello-world
+    volumes:
+      - redis-data:/data
+    environment:
+      - "constraint:node==*-ucpnode"
+
+networks:
+  hello-world:
+    driver: overlay
+
+volumes:
+  redis-data:
+    driver: local
