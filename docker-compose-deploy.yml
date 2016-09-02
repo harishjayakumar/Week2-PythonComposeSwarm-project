@@ -8,6 +8,7 @@ services:
     networks:
       - hello-world
     labels:
+      - "com.docker.ucp.access.label=${COMPOSE_PROJECT}"
       - "interlock.hostname=hello-world-${ENVIRONMENT}"
       - "interlock.domain=${DOMAIN_NAME}"
     environment:
