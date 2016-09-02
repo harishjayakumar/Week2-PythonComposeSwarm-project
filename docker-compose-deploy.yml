@@ -2,11 +2,9 @@ version: "2"
 
 services:
   web:
-    build: .
+    image: ${DTR_URL}/admin/hello-world-python:${GITID}
     ports:
-     - "5000:5000"
-    volumes:
-     - .:/code
+     - "5000"
     networks:
       - hello-world
   redis:
@@ -19,7 +17,7 @@ services:
 
 networks:
   hello-world:
-    driver: bridge
+    driver: overlay
 
 volumes:
   redis-data:
