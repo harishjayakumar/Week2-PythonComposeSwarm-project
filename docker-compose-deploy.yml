@@ -2,7 +2,7 @@ version: "2"
 
 services:
   web:
-    image: ${DTR_URL}/admin/hello-world-python:${GITID}
+    image: ${DTR_URL}/admin/hello-world-python:${TAG}
     ports:
      - "5000"
     networks:
