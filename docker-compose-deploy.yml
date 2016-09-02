@@ -21,6 +21,8 @@ services:
       - hello-world
     volumes:
       - redis-data:/data
+    labels:
+      - "com.docker.ucp.access.label=${COMPOSE_PROJECT}"
     environment:
       - "constraint:node==*-ucpnode"
 
