@@ -11,8 +11,7 @@ services:
       - "com.docker.ucp.access.label=${COMPOSE_PROJECT}"
       - "interlock.hostname=hello-world-${ENVIRONMENT}"
       - "interlock.domain=${DOMAIN_NAME}"
-    environment:
-      - "constraint:node==*-ucpnode"
+    
 
   redis:
     image: redis:3.2-alpine
@@ -23,8 +22,7 @@ services:
       - redis-data:/data
     labels:
       - "com.docker.ucp.access.label=${COMPOSE_PROJECT}"
-    environment:
-      - "constraint:node==*-ucpnode"
+   
 
 networks:
   hello-world:
