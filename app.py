@@ -7,7 +7,7 @@ redis = Redis(host='redis', port=6379)
 @app.route('/')
 def hello():
     redis.incr('hits')
-    return 'Docker Demo - Friday demos should always work Happy Friday. I have been seen %s times.' % redis.get('hits')
+    return 'Docker Demo - Tuesday  demos should always work Happy Friday. I have been seen %s times.' % redis.get('hits')
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", debug=True)
