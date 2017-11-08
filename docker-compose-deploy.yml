@@ -26,8 +26,12 @@ services:
 
 networks:
   hello-world:
+  labels:
+      - "com.docker.ucp.access.label=/demo-collection/${ENVIRONMENT}"
     
 
 volumes:
   redis-data:
     driver: local
+    labels:
+      - "com.docker.ucp.access.label=/demo-collection/${ENVIRONMENT}"
