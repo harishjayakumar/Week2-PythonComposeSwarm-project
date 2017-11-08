@@ -8,7 +8,7 @@ services:
     networks:
       - hello-world
     labels:
-      - "com.docker.ucp.access.label=${COMPOSE_PROJECT}"
+      - "com.docker.ucp.access.label=/demo-collection/${ENVIRONMENT}"
       - "interlock.hostname=hello-world-${ENVIRONMENT}"
       - "interlock.domain=${DOMAIN_NAME}"
     
@@ -21,7 +21,7 @@ services:
     volumes:
       - redis-data:/data
     labels:
-      - "com.docker.ucp.access.label=${COMPOSE_PROJECT}"
+      - "com.docker.ucp.access.label=/demo-collection/${ENVIRONMENT}"
    
 
 networks:
