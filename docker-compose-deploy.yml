@@ -26,7 +26,7 @@ services:
 
 networks:
   hello-world:
-  labels:
+   labels:
       - "com.docker.ucp.access.label=/demo-collection/${ENVIRONMENT}"
     
 
